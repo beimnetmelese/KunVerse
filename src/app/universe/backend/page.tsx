@@ -7,8 +7,28 @@ import { universes } from "@/lib/constants/galaxies";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
+export const frontendProjects = [
+  {
+    id: 1,
+    name: "This Portfolio",
+    description:
+      "A 3D interactive multiverse portfolio using Next.js and React Three Fiber.",
+    image: "/images/portfolio.jpg",
+    stack: ["Next.js", "Tailwind", "Three.js"],
+  },
+  {
+    id: 2,
+    name: "Game Library",
+    description:
+      "A responsive React site displaying all games and their details beautifully.",
+    image: "/images/games.jpg",
+    stack: ["React", "Chakra UI", "React Router"],
+  },
+  // Add more projects here
+];
+
 export default function MultiversePage() {
-  const [hoveredId, setHoveredId] = useState<string>("");
+  const [hoveredId, setHoveredId] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -100,11 +120,12 @@ export default function MultiversePage() {
           className="text-center mb-12"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-            Multiverse Explorer
+            Backend Universe
           </h1>
           <p className="text-xl text-cyan-200/80 max-w-2xl mx-auto">
-            Journey through infinite realities where every choice creates a new
-            universe
+            Behind every smooth interface is a backend warrior. This universe is
+            all about APIs, databases, auth systems, and logic that makes
+            everything *just work* — from Django magic to blazing-fast queries.
           </p>
         </motion.div>
 
@@ -114,7 +135,7 @@ export default function MultiversePage() {
           transition={{ duration: 1, delay: 0.5 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl pb-16"
         >
-          {universes.map((universe) => (
+          {frontendProjects.map((universe) => (
             <motion.div
               key={universe.id}
               whileHover={{
@@ -124,7 +145,7 @@ export default function MultiversePage() {
               }}
               whileTap={{ scale: 0.98 }}
               onHoverStart={() => setHoveredId(universe.id)}
-              onHoverEnd={() => setHoveredId("")}
+              onHoverEnd={() => setHoveredId(0)}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
@@ -150,7 +171,7 @@ export default function MultiversePage() {
               {/* Universe Image with Shine Effect */}
               <div className="relative h-56 w-full overflow-hidden group">
                 <Image
-                  src={universe.texture || "/images/fallback.jpg"}
+                  src={universe.image || "/images/fallback.jpg"}
                   alt={universe.name}
                   fill
                   className="object-cover transition-transform duration-700 group-hover:scale-110"
@@ -166,17 +187,19 @@ export default function MultiversePage() {
                   <h2 className="text-2xl font-bold text-white mr-3">
                     {universe.name}
                   </h2>
-                  <span className="text-xs px-2 py-1 rounded-full bg-cyan-500/20 text-cyan-300">
-                    #{universe.id}
-                  </span>
                 </div>
                 <p className="text-gray-300 mb-4">{universe.description}</p>
-                <motion.div
-                  whileHover={{ x: 5 }}
-                  className="inline-flex items-center text-cyan-400 font-medium text-sm"
-                >
-                  Explore dimension →
-                </motion.div>
+                <div className="flex flex-wrap gap-2">
+                  {universe.stack.map((tech) => (
+                    <motion.span
+                      key={tech}
+                      whileHover={{ scale: 1.1 }}
+                      className="text-xs bg-cyan-600/20 text-cyan-300 px-3 py-1.5 rounded-full"
+                    >
+                      {tech}
+                    </motion.span>
+                  ))}
+                </div>
               </div>
 
               {/* Animated Particles on Hover */}

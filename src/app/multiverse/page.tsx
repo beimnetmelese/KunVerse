@@ -7,11 +7,6 @@ const MultiverseScene = dynamic(
   () => import("@/components/cosmic/MultiverseScene"),
   {
     ssr: false,
-    loading: () => (
-      <div className="h-screen w-screen bg-black text-white flex items-center justify-center">
-        🪐 Loading the multiverse...
-      </div>
-    ),
   }
 );
 

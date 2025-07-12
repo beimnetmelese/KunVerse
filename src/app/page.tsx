@@ -9,7 +9,7 @@ export default function HomePage() {
   const router = useRouter();
 
   return (
-    <div className="relative w-screen h-screen bg-black">
+    <div className="relative w-screen h-screen bg-gradient-to-br from-black via-[#0f0f1a] to-[#1a1a2e]">
       {/* 🌌 Stars background */}
       <Canvas
         className="absolute inset-0 z-0"
@@ -41,7 +41,7 @@ export default function HomePage() {
 
         <button
           onClick={() => router.push("/multiverse")}
-          className="mt-8 px-6 py-3 bg-[#61dafb] text-black text-lg font-semibold rounded-xl shadow-lg hover:scale-105 transition-all duration-300"
+          className="px-6 py-3 mt-10 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 flex items-center"
         >
           🌌 Enter the Multiverse
         </button>
