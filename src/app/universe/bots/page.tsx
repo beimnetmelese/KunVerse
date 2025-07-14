@@ -3,33 +3,63 @@
 import { Canvas } from "@react-three/fiber";
 import { Stars, OrbitControls } from "@react-three/drei";
 import Image from "next/image";
-import { universes } from "@/lib/constants/galaxies";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { ChatGroq } from "@/components/ChatGroq";
 
-export const frontendProjects = [
+export const botProjects = [
   {
     id: 1,
-    name: "This Portfolio",
+    name: "MovieMate",
     description:
-      "A 3D interactive multiverse portfolio using Next.js and React Three Fiber.",
-    image: "/images/portfolio.jpg",
-    stack: ["Next.js", "Tailwind", "Three.js"],
+      "Telegram bot that recommends movies based on genre preferences and vibes.",
+    image: "/movie.jpg",
+    stack: ["Python", "Telegram Bot API"],
+    link: "https://t.me/MovieMatePybot",
   },
   {
     id: 2,
-    name: "Game Library",
+    name: "Mentorix Employee Bot",
     description:
-      "A responsive React site displaying all games and their details beautifully.",
-    image: "/images/games.jpg",
-    stack: ["React", "Chakra UI", "React Router"],
+      "Connects tutors with students through registration and profile management on Telegram.",
+    image: "/mentorix.jpg",
+    stack: ["Python", "Telegram Bot API"],
+    link: "https://t.me/MentorixEmployeeBot",
   },
-  // Add more projects here
+  {
+    id: 3,
+    name: "Mentorix Client Bot",
+    description:
+      "Client-side bot that helps users find available tutors via Telegram.",
+    image: "/mentorix.jpg",
+    stack: ["Python", "Telegram Bot API"],
+    link: "https://t.me/MentorixClientBot",
+  },
+
+  {
+    id: 4,
+    name: "AASTU Lost And Found",
+    description:
+      "Bot for AASTU students to report and recover lost items easily.",
+    image: "/aastu.jpg",
+    stack: ["Python", "Telegram Bot API"],
+    link: "https://t.me/aastulostandfoundunionbot",
+  },
+  {
+    id: 5,
+    name: "ScoreSnap",
+    description:
+      "Live football score bot with real-time updates for your favorite teams.",
+    image: "/scoresnap.jpg",
+    stack: ["Python", "Telegram Bot API", "Football API"],
+    link: "https://t.me/Scoresnapresultbot",
+  },
 ];
 
 export default function MultiversePage() {
   const [hoveredId, setHoveredId] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
@@ -59,7 +89,6 @@ export default function MultiversePage() {
 
   return (
     <div className="relative w-screen h-screen bg-gradient-to-br from-black via-[#0f0f1a] to-[#1a1a2e] overflow-hidden">
-      {/* 🌠 Animated Nebula Background */}
       <Canvas className="absolute inset-0 z-0">
         <ambientLight intensity={0.5} />
         <pointLight position={[10, 10, 10]} />
@@ -81,37 +110,6 @@ export default function MultiversePage() {
         />
       </Canvas>
 
-      {/* ✨ Floating Particles */}
-      <div className="absolute inset-0 z-1 overflow-hidden">
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={i}
-            initial={{
-              x: Math.random() * window.innerWidth,
-              y: Math.random() * window.innerHeight,
-              opacity: 0,
-            }}
-            animate={{
-              y: [0, Math.random() * 100 - 50],
-              x: [0, Math.random() * 100 - 50],
-              opacity: [0, 0.8, 0],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 10,
-              repeat: Infinity,
-              repeatType: "reverse",
-              ease: "easeInOut",
-            }}
-            className="absolute w-1 h-1 rounded-full bg-white"
-            style={{
-              width: `${Math.random() * 3 + 1}px`,
-              height: `${Math.random() * 3 + 1}px`,
-            }}
-          />
-        ))}
-      </div>
-
-      {/* 🌌 Main Content */}
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-start pt-16 px-4 overflow-y-auto">
         <motion.div
           initial={{ y: -50, opacity: 0 }}
@@ -120,9 +118,9 @@ export default function MultiversePage() {
           className="text-center mb-12"
         >
           <h1 className="text-5xl md:text-7xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-            Telegram Bot Universe
+            Bot Universe
           </h1>
-          <p className="text-xl text-cyan-200/80 max-w-4xl mx-auto">
+          <p className="text-xl text-cyan-200/80 max-w-2xl mx-auto">
             Welcome to the automagical world of bots 🤖 — from Telegram
             assistants to intelligent customer support, this universe is all
             about building bots that actually *do* things. Smart, fast, and
@@ -136,7 +134,7 @@ export default function MultiversePage() {
           transition={{ duration: 1, delay: 0.5 }}
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 w-full max-w-6xl pb-16"
         >
-          {frontendProjects.map((universe) => (
+          {botProjects.map((universe) => (
             <motion.div
               key={universe.id}
               whileHover={{
@@ -155,11 +153,8 @@ export default function MultiversePage() {
                   ? "from-purple-600/30 to-cyan-500/30 border-2 border-cyan-300/50"
                   : "from-purple-900/30 to-indigo-900/30 border border-white/20"
               }`}
-              onClick={() =>
-                (window.location.href = `/universe/${universe.id}`)
-              }
+              onClick={() => (window.location.href = universe.link)}
             >
-              {/* Card Glow Effect */}
               {hoveredId === universe.id && (
                 <motion.div
                   className="absolute inset-0 bg-cyan-400/10 rounded-xl"
@@ -168,8 +163,6 @@ export default function MultiversePage() {
                   transition={{ duration: 0.3 }}
                 />
               )}
-
-              {/* Universe Image with Shine Effect */}
               <div className="relative h-56 w-full overflow-hidden group">
                 <Image
                   src={universe.image || "/images/fallback.jpg"}
@@ -181,8 +174,6 @@ export default function MultiversePage() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
                 <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-cyan-500/10" />
               </div>
-
-              {/* Card Content */}
               <div className="p-6 relative z-10">
                 <div className="flex items-center mb-3">
                   <h2 className="text-2xl font-bold text-white mr-3">
@@ -202,8 +193,6 @@ export default function MultiversePage() {
                   ))}
                 </div>
               </div>
-
-              {/* Animated Particles on Hover */}
               {hoveredId === universe.id && (
                 <>
                   {[...Array(8)].map((_, i) => (
@@ -241,18 +230,27 @@ export default function MultiversePage() {
         </motion.div>
       </div>
 
-      {/* 🌟 Floating CTA */}
+      {/* Floating CTA */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 1.5, duration: 0.5 }}
         className="fixed bottom-8 right-8 z-20"
       >
-        <button className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 flex items-center">
-          <span className="mr-2">Create Your Universe</span>
-          <span className="text-xl">+</span>
+        <button
+          onClick={() => setShowChat(true)}
+          className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 flex items-center"
+        >
+          <span className="mr-2">Message the AI</span>
+          <span className="text-xl">🤖</span>
         </button>
       </motion.div>
+
+      {showChat && (
+        <div className="fixed bottom-24 right-6 w-full max-w-md z-50">
+          <ChatGroq onClose={() => setShowChat(false)} />
+        </div>
+      )}
     </div>
   );
 }

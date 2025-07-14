@@ -4,9 +4,38 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Stars } from "@react-three/drei";
 import { useRouter } from "next/navigation";
 import TypingIntro from "@/components/TypingIntro";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 
 export default function HomePage() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsLoading(false), 1500);
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-purple-900 via-indigo-900 to-black">
+        <motion.div
+          animate={{
+            scale: [1, 1.2, 1],
+            rotate: [0, 360, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+          className="text-5xl text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500"
+        >
+          ⚡
+        </motion.div>
+      </div>
+    );
+  }
 
   return (
     <div className="relative w-screen h-screen bg-gradient-to-br from-black via-[#0f0f1a] to-[#1a1a2e]">

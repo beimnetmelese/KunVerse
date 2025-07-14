@@ -6,10 +6,12 @@ import Image from "next/image";
 import { universes } from "@/lib/constants/galaxies";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { ChatGroq } from "../ChatGroq";
 
-export default function MultiversePage() {
+export default function MultiverseScene() {
   const [hoveredId, setHoveredId] = useState<string>("");
   const [isLoading, setIsLoading] = useState(true);
+  const [showChat, setShowChat] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 1500);
@@ -224,11 +226,19 @@ export default function MultiversePage() {
         transition={{ delay: 1.5, duration: 0.5 }}
         className="fixed bottom-8 right-8 z-20"
       >
-        <button className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 flex items-center">
-          <span className="mr-2">Create Your Universe</span>
-          <span className="text-xl">+</span>
+        <button
+          onClick={() => setShowChat(true)}
+          className="px-6 py-3 rounded-full bg-gradient-to-r from-purple-600 to-cyan-500 text-white font-bold shadow-lg hover:shadow-xl hover:shadow-purple-500/30 transition-all duration-300 flex items-center"
+        >
+          <span className="mr-2">Message the AI</span>
+          <span className="text-xl">🤖</span>
         </button>
       </motion.div>
+      {showChat && (
+        <div className="fixed bottom-24 right-6 w-full max-w-md z-50">
+          <ChatGroq onClose={() => setShowChat(false)} />
+        </div>
+      )}
     </div>
   );
 }

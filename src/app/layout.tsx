@@ -1,3 +1,4 @@
+import Navbar from "@/components/NavBar";
 import "./globals.css";
 import { Orbitron } from "next/font/google";
 
@@ -20,7 +21,8 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${orbitron.className} bg-black text-white`}>
+      <body>
+        <Navbar />
         {children}
       </body>
     </html>
