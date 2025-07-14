@@ -157,7 +157,7 @@ export default function ContactUniverse() {
             transition={{ delay: 0.3, duration: 0.8 }}
             className="text-lg text-gray-300 mb-12"
           >
-            Got an idea, project, or just want to vibe? Let's make something
+            Got an idea, project, or just want to vibe? Lets make something
             cosmic together.
           </motion.p>
 
@@ -181,7 +181,8 @@ export default function ContactUniverse() {
                   Message Sent!
                 </h2>
                 <p className="text-gray-300">
-                  I'll get back to you faster than light travels through space.
+                  I will get back to you faster than light travels through
+                  space.
                 </p>
               </motion.div>
             ) : (
@@ -349,7 +350,7 @@ export default function ContactUniverse() {
                   <div>
                     <h4 className="font-medium text-gray-300">Phone</h4>
                     <div className="flex items-center gap-2">
-                      <p className="text-sm text-gray-400">+251 912 345 678</p>
+                      <p className="text-sm text-gray-400">+251 963659350</p>
                       <motion.button
                         onClick={() =>
                           copyToClipboard("+251912345678", "phone")

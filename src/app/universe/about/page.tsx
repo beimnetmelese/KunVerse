@@ -368,10 +368,10 @@ export default function AboutUniverse() {
               The Core: Why I Do This
             </h2>
             <p className="text-gray-300 text-lg text-center max-w-3xl mx-auto">
-              Good software solves real problems. I'm driven by curiosity,
+              Good software solves real problems. Im driven by curiosity,
               creativity, and the belief that tech should feel like magic — but
-              work like science. Every line of code is a chance to make
-              someone's life easier.
+              work like science. Every line of code is a chance to make someones
+              life easier.
             </p>
           </motion.section>
         </div>
@@ -388,7 +388,7 @@ export default function AboutUniverse() {
             Ready to Build Something Cosmic?
           </h2>
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-            Let's connect and create digital experiences that feel like magic.
+            Lets connect and create digital experiences that feel like magic.
           </p>
           <motion.a
             href="/universe/contact"
