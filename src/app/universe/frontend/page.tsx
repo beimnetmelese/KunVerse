@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChatGroq } from "@/components/ChatGroq";
 
-export const frontendProjects = [
+const frontendProjects = [
   {
     id: 1,
     name: "Book Ethiopia",

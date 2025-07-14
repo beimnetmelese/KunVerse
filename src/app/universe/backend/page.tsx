@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChatGroq } from "@/components/ChatGroq";
 
-export const backendProjects = [
+const backendProjects = [
   {
     id: 1,
     name: "E-commerce Backend",

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChatGroq } from "@/components/ChatGroq";
 
-export const botProjects = [
+const botProjects = [
   {
     id: 1,
     name: "MovieMate",
