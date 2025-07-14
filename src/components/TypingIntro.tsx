@@ -3,8 +3,7 @@
 import { useEffect, useState } from "react";
 
 export default function TypingIntro() {
-  const text =
-    "🚀 Welcome, traveler. You’ve entered Beimnet’s Dev Multiverse...";
+  const text = "🚀 Welcome, traveler. You’ve entered Kun’s Dev Multiverse...";
   const [displayed, setDisplayed] = useState("");
 
   useEffect(() => {
