@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { X, Send, Sparkles } from "lucide-react";
 
 export function ChatGroq({ onClose }: { onClose: () => void }) {
