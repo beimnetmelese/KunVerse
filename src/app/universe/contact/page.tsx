@@ -41,7 +41,7 @@ export default function ContactUniverse() {
     e.preventDefault();
     const form = e.target as HTMLFormElement;
     setIsSubmitted(true);
-    fetch("https://formsubmit.co/beimnetmelese16@@gmail.com", {
+    fetch("https://formsubmit.co/beimnetmelese16@gmail.com", {
       method: "POST",
       body: new FormData(form),
     })
