@@ -37,11 +37,11 @@ export default function ContactUniverse() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e: any) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const form = e.target;
+    const form = e.target as HTMLFormElement;
     setIsSubmitted(true);
-    fetch("https://formsubmit.co/beimnetmelese16@gmail.com", {
+    fetch("https://formsubmit.co/beimnetmelese16@@gmail.com", {
       method: "POST",
       body: new FormData(form),
     })
